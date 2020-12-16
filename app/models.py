@@ -15,6 +15,8 @@ class User(UserMixin,db.Model):
     username = db.Column(db.String(255),unique = True,nullable = False)
     email  = db.Column(db.String(255),unique = True,nullable = False)
     secure_password = db.Column(db.String(255),nullable = False)
+
+
     event = db.relationship('Event', backref='user', lazy='dynamic')
 
 
@@ -35,32 +37,60 @@ class User(UserMixin,db.Model):
         return f'User {self.username}'
 
 class Event(db.Model):
-    __tablename__ = 'event'
+    __tablename__ = 'events'
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(255),nullable = False)
     event_pic_path = db.Column(db.String())
     description = db.Column(db.Text(), nullable = False)
     category = db.Column(db.String(255), index = True,nullable = False)
-    value = db.Column(db.String(255), nullable = False) 
+    value = db.Column(db.Integer, nullable = False) 
     time = db.Column(db.DateTime, default = datetime.utcnow)
+
+
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    donor = db.relationship('Donor',backref='event',lazy='dynamic')
    
+    @classmethod
+    def clear_event(cls):
+        Bloc.event.clear()
     
     @classmethod
-    def get_event(cls):
+    def get_events(cls):
         event = Event.query.filter_by(id = id).all()
         return event
+
+    def delete(self, id):
+        donors = Donor.query.filter_by(id = id).all()
+        for donor in donors:
+            db.session.delete(donor)
+            db.session.commit()
+        db.session.delete(self)
+        db.session.commit()    
     
     def __repr__(self):
         return f'Event {self.name}'
+
+        
 
 class Donor(db.Model):
     __tablename__ = 'donors'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255),unique = True,nullable = False)
     email  = db.Column(db.String(255),unique = True,nullable = False)
-    amount = db.Column(db.String(255), nullable = False)
+    amount = db.Column(db.Integer, nullable = False)
+
+    event_id = db.Column(db.Integer,db.ForeignKey('events.id'))
+
+
+    @classmethod
+    def clear_comment(self):
+        Donor.donors.clear()
+
+    @classmethod
+    def get_donors(cls, id):
+        donors = Donor.query.filter_by(event_id = id).all()
+        return donors   
 
      
     def __repr__(self):
-        return f'Event {self.name}'
+        return f'Donor {self.name}'
