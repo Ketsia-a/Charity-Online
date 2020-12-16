@@ -48,3 +48,33 @@ def add_event():
 
         
     return render_template('event.html', form = form)
+
+
+
+@main.route('/donor/<int:event_id>', methods = ['POST','GET'])
+def donor(event_id):
+    form = DonorForm()
+    event = Event.query.get(event_id)
+    all_donors = Donor.query.filter_by(event_id = event_id).all()
+    if form.validate_on_submit():
+        name = form.name.data
+        email = form.email.data
+        amount = form.amount.data
+        event_id = event_id
+        new_donor = Donor(name = name, email = email, amount = amount,event_id = event_id)
+        
+        db.session.add(new_donor)
+        db.session.commit()
+        return redirect(url_for('.donor', event_id = event_id))
+    return render_template('donor.html', form =form, event = event,all_donors=all_donors) 
+
+@main.route('/index/<int:id>/delete',methods = ['GET','POST'])
+@login_required
+def delete(id):
+    current_event = Event.query.filter_by(id = id).first()
+    if current_event.user != current_user:
+        abort(404)
+    db.session.delete(current_event)
+    db.session.commit()
+
+    return redirect(url_for('.index'))    
