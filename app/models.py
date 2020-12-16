@@ -15,8 +15,6 @@ class User(UserMixin,db.Model):
     username = db.Column(db.String(255),unique = True,nullable = False)
     email  = db.Column(db.String(255),unique = True,nullable = False)
     secure_password = db.Column(db.String(255),nullable = False)
-
-    
     event = db.relationship('Event', backref='user', lazy='dynamic')
 
 
@@ -35,3 +33,34 @@ class User(UserMixin,db.Model):
 
     def __repr__(self):
         return f'User {self.username}'
+
+class Event(db.Model):
+    __tablename__ = 'event'
+    id = db.Column(db.Integer, primary_key = True)
+    title = db.Column(db.String(255),nullable = False)
+    event_pic_path = db.Column(db.String())
+    description = db.Column(db.Text(), nullable = False)
+    category = db.Column(db.String(255), index = True,nullable = False)
+    value = db.Column(db.String(255), nullable = False) 
+    time = db.Column(db.DateTime, default = datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+   
+    
+    @classmethod
+    def get_event(cls):
+        event = Event.query.filter_by(id = id).all()
+        return event
+    
+    def __repr__(self):
+        return f'Event {self.name}'
+
+class Donor(db.Model):
+    __tablename__ = 'donors'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255),unique = True,nullable = False)
+    email  = db.Column(db.String(255),unique = True,nullable = False)
+    amount = db.Column(db.String(255), nullable = False)
+
+     
+    def __repr__(self):
+        return f'Event {self.name}'
