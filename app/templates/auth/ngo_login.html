@@ -3,18 +3,19 @@
 {% import 'bootstrap/wtf.html' as wtf%} {% block content %}
 
 
-<div class="container-fluid">
+<div class="container-fluid" style="background-image:url('https://previews.123rf.com/images/nickshot/nickshot1504/nickshot150400039/39524514-vrouw-handen-met-hart-ge%C3%AFsoleerd-op-een-groene-achtergrond-familie-gezondheid-liefdadigheid-en-geneesk.jpg');background-size: cover; height: 91.08vh; background-position: center;margin-top: -0.55cm; padding-top: 100px;">
     <br>
     <br>
     <div>
-        <h1>Enter Your Credentials</h1>
+        <h1 style="text-align: center;font-weight: bold;color: white;">Enter Your Credentials</h1>
         <div class="row" style="margin-top: 70px;color: white;">
             <div class="col-md-2"> </div>
             <div class="col-md-8">
                 <!--Flash message -->
                 {% for message in get_flashed_messages() %}
                 <div class="alert alert-danger">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button> {{ message }}
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ message }}
                 </div>
                 {% endfor %}
                 <!-- Login form -->
