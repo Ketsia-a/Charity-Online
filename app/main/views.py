@@ -1,9 +1,9 @@
 from flask import render_template,request,redirect,url_for,abort,current_app
-from ..models import User,Event
+from ..models import User,Event,Donor
 from . import main
 from flask_login import login_required
 from .. import db,photos
-from .forms import EventForm
+from .forms import EventForm,DonorForm
 from flask_login import current_user
 
 # Views
@@ -31,7 +31,7 @@ def add_event():
             event_pic_path = form.event_pic_path.data     
             if form.validate_on_submit():
 
-                new_event = Event(description=description,user_id=current_user._get_current_object().id,event_pic_path=event_pic_path,category=category,title=title)
+                new_event = Event(description=description,user_id=current_user._get_current_object().id,event_pic_path=event_pic_path,category=category,value=value,title=title)
                 db.session.add(new_event)
                 db.session.commit()
         
@@ -40,7 +40,7 @@ def add_event():
             event_pic_path = 'https://www.freevector.com/uploads/vector/preview/25765/Charity_-01.jpg'    
             if form.validate_on_submit():
 
-                new_event = Event(description=description,user_id=current_user._get_current_object().id,event_pic_path=event_pic_path,category=category,title=title)
+                new_event = Event(description=description,user_id=current_user._get_current_object().id,event_pic_path=event_pic_path,category=category,title=title,value=value)
                 db.session.add(new_event)
                 db.session.commit()
         
@@ -59,14 +59,14 @@ def donor(event_id):
     if form.validate_on_submit():
         name = form.name.data
         email = form.email.data
-        amount = form.amount.data
+        amount = form.value.data
         event_id = event_id
         new_donor = Donor(name = name, email = email, amount = amount,event_id = event_id)
         
         db.session.add(new_donor)
         db.session.commit()
-        return redirect(url_for('.donor', event_id = event_id))
-    return render_template('donor.html', form =form, event = event,all_donors=all_donors) 
+        return redirect(url_for('.index', event_id = event_id))
+    return render_template('donation.html', form =form, event = event,all_donors=all_donors) 
 
 @main.route('/index/<int:id>/delete',methods = ['GET','POST'])
 @login_required

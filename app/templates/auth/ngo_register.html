@@ -2,12 +2,17 @@
 {% extends 'base.html'%}
  {% import 'bootstrap/wtf.html' as wtf%} {% block content %}
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-8">
+ <div class="container-fluid" style="background-image:url('https://previews.123rf.com/images/nickshot/nickshot1504/nickshot150400039/39524514-woman-hands-holding-heart-isolated-on-green-background-family-health-charity-and-medicine-concept-.jpg');background-size: cover; height: 91.08vh; background-position: center;margin-top: -0.55cm; padding-top: 20px;">
+    <div>
+        <h1 style="text-align: center;font-weight: bold;color: black;margin-top: 70px;font-family: 'Times New Roman', Times, serif;">Register with Your Credentials</h1>
+        <div class="row" style="color: white;">
+            <div class="col-md-2"> </div>
+            <div class="col-md-8">
 
-            {{wtf.quick_form(registration_form)}}
+                {{wtf.quick_form(registration_form)}}
 
+            </div>
+            <div class="col-md-2"></div>
         </div>
     </div>
 </div>

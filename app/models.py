@@ -75,8 +75,8 @@ class Event(db.Model):
 class Donor(db.Model):
     __tablename__ = 'donors'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255),unique = True,nullable = False)
-    email  = db.Column(db.String(255),unique = True,nullable = False)
+    name = db.Column(db.String(255),nullable = False)
+    email  = db.Column(db.String(255),nullable = False)
     amount = db.Column(db.Integer, nullable = False)
 
     event_id = db.Column(db.Integer,db.ForeignKey('events.id'))
