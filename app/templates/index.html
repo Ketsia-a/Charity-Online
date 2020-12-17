@@ -1,52 +1,38 @@
-{% import 'macros.html' as macro%}
-{% extends 'base.html'%}
+ {% import 'macros.html' as macro%} {% extends 'base.html'%} {% block head%}
+<link rel="stylesheet" href="../static/style.css"> {% endblock %} {% block content%}
 
-{% block head%}
-<link rel="stylesheet" href="../static/style.css">
-
-{% endblock %}
-
-{% block content%}
-<div class="jumbotron"
-    style="background-image:url('https://res.cloudinary.com/mugisha-thierry/image/upload/v1608196334/charity2_wrbfhr.jpg');background-size: cover; background-position: center;">
+<div class="jumbotron" style="background-image:url('https://res.cloudinary.com/mugisha-thierry/image/upload/v1608196334/charity2_wrbfhr.jpg');background-size: cover; background-position: center;">
     <div>
-        <h1 class="text-center"
-            style="letter-spacing: 5px;font-family: 'Euphoria Script', cursive;color:#2a8000;height: 10px;padding-top: 100px;">
+        <h1 class="text-center" style="letter-spacing: 5px;font-family: 'Euphoria Script', cursive;color:#2a8000;height: 10px;padding-top: 100px;">
             <strong>
                 Charity Online</strong></h1>
-        <p class="text-center"
-            style="color: black;font-style: italic;font-family: 'Times New Roman', Times, serif; padding-top: 100px; padding-bottom: 150px;">
+        <p class="text-center" style="color: black;font-style: italic;font-family: 'Times New Roman', Times, serif; padding-top: 100px; padding-bottom: 150px;">
             "We make a living by what we get, but we make a life by what we give"<br>Winston churchill</p>
     </div>
 
 </div>
 <div class="text-center">
     <style>
-        .nav-pills .nav-link.active,.nav-link .a:hover{
-  background-color: green;
-  
-}
+        .nav-pills .nav-link.active,
+        .nav-link .a:hover {
+            background-color: green;
+        }
     </style>
     <ul class="nav nav-pills mb-3 nav nav-pills nav-justified" id="pills-tab" role="tablist">
         <li class="nav-item">
-            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
-                aria-controls="pills-home" aria-selected="true">All events</a>
+            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">All events</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
-                aria-controls="pills-profile" aria-selected="false">Clothes</a>
+            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Clothes</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
-                aria-controls="pills-contact" aria-selected="false">Money</a>
+            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Money</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
-                aria-controls="pills-contact" aria-selected="false">Food</a>
+            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Food</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
-                aria-controls="pills-contact" aria-selected="false">Books</a>
+            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Books</a>
         </li>
     </ul>
 </div>
@@ -72,19 +58,15 @@
                         <input type="text" class="form-control" name="name" id="name" placeholder="Name" required="">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="email" id="email" placeholder="E-mail"
-                            required="">
+                        <input type="text" class="form-control" name="email" id="email" placeholder="E-mail" required="">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number"
-                            required="">
+                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number" required="">
                     </div>
                     <div class="form-group">
-                        <textarea type="text" class="form-control" name="message_body" id="message_body"
-                            placeholder="Your Message" required="" style="height:100px; "></textarea>
+                        <textarea type="text" class="form-control" name="message_body" id="message_body" placeholder="Your Message" required="" style="height:100px; "></textarea>
                     </div>
-                    <button class="btn" type="submit" style="width: 100%; background-color: #2a8000; color: aliceblue;"
-                        data-toggle="modal" data-target="#messageReceived">Submit form</button>
+                    <button class="btn" type="submit" style="width: 100%; background-color: #2a8000; color: aliceblue;" data-toggle="modal" data-target="#messageReceived">Submit form</button>
                 </form>
             </div>
             <div class="col-sm-6" style="padding:4%">
