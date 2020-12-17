@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block content %}
+
+<div class="container-fluid"
+    style="background-image:url('https://previews.123rf.com/images/nickshot/nickshot1504/nickshot150400039/39524514-woman-hands-holding-heart-isolated-on-green-background-family-health-charity-and-medicine-concept-.jpg'); background-size: cover; height: 89.4vh; background-position: center;margin-top: -0.55cm;">
+    <div class="row">
+        <div class="col-md-2"> </div>
+        <div class="col-md-8">
+            <h3
+                style="font-weight: bold;font-size: 50px;margin-top: 80px;letter-spacing:2px;font-family: 'Times New Roman', Times, serif; color: black;text-align: center;">
+                Create An Event</h3>
+            <br>
+            <div style="color: white; background-color: transparent;">
+                {{wtf.quick_form(form)}}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
