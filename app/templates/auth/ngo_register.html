@@ -1,9 +1,12 @@
-{% extends 'base.html'%} {% import 'bootstrap/wtf.html' as wtf%} {% block content %}
+
+{% extends 'base.html'%}
+ {% import 'bootstrap/wtf.html' as wtf%} {% block content %}
+
 <div class="container">
     <div class="row">
         <div class="col-md-8">
 
-            {{wtf.quick_form(ngoregistration_form)}}
+            {{wtf.quick_form(registration_form)}}
 
         </div>
     </div>
