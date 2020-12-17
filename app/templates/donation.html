@@ -1,0 +1,29 @@
+{% extends 'base.html'%} {% import 'bootstrap/wtf.html' as wtf%} {% block content %}
+<section class="donors">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="donors_input">
+                    <h2>DONATION NOW</h2>
+
+                    <h5>
+                        {{wtf.quick_form(donor_form)}}
+
+                    </h5>
+
+                </div>
+                <div class="donors_image">
+                    <h2>{{donor.name}}Your donation</h2>
+                    <div class="donors_featured owl-carousel owl-theme">
+                        <div class="item">
+                            <h3>For {{current_event.title}}</h3>
+                            <p>Donated Amount :<span>{{donor.amount}}</span> </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock%}

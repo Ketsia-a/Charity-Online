@@ -14,7 +14,7 @@ class EventForm(FlaskForm):
 
 
 class DonorForm(FlaskForm):
-    name = StringField('Donor name', validators=[Required()])
-    email = StringField('Donor Email Address',validators=[Required(),Email()])
+    name = StringField('Your name', validators=[Required()])
+    email = StringField('Your Email Address',validators=[Required(),Email()])
     value = IntegerField('Amount donated', validators=[Required()])
     submit = SubmitField('Donate')    
